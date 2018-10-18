@@ -133,6 +133,10 @@ public class AddressBook implements ReadOnlyTaskBook {
         currentDate = deadline;
     }
 
+    public boolean validDeadline(Deadline deadline) {
+        return currentDate.isValidDeadline(deadline.toString());
+    }
+
     // util methods
 
     @Override

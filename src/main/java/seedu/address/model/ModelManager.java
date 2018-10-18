@@ -90,12 +90,6 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTaskBookChanged();
     }
 
-    @Override
-    public void selectDeadline(Deadline deadline) {
-        versionedTaskBook.selectDeadline(deadline);
-        //updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
-        //indicateTaskBookChanged();
-    }
 
     @Override
     public void updateTask(Task target, Task editedTask) {
@@ -103,6 +97,18 @@ public class ModelManager extends ComponentManager implements Model {
 
         versionedTaskBook.updateTask(target, editedTask);
         indicateTaskBookChanged();
+    }
+
+    //@@author emobeany
+    @Override
+    public void selectDeadline(Deadline deadline) {
+        versionedTaskBook.selectDeadline(deadline);
+        indicateTaskBookChanged();
+    }
+
+    @Override
+    public boolean validDeadline(Deadline deadline) {
+        return versionedTaskBook.validDeadline(deadline);
     }
 
     //@@author JeremyInElysium
@@ -175,12 +181,4 @@ public class ModelManager extends ComponentManager implements Model {
         return versionedTaskBook.equals(other.versionedTaskBook)
                 && filteredTasks.equals(other.filteredTasks);
     }
-
-    /*
-    //=========== Deadline Accessors =============================================================
-    @Override
-    public void selectDeadline(Deadline deadline);
-    @Override
-    public boolean invalidDeadline(Deadline deadline);
-    */
 }
