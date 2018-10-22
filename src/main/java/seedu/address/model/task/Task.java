@@ -9,14 +9,14 @@ import seedu.address.model.task.exceptions.TaskCompletedException;
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Task {
-    private static final String PLACEHOLDER_DEADLINE = "1/1";
-    private String deadline;
+    private static final Deadline PLACEHOLDER_DEADLINE = new Deadline("1/1/2018");
+    private Deadline deadline;
     private final String title;
     private final String description;
     private final PriorityLevel priorityLevel;
     private boolean isCompleted;
 
-    public Task(String deadline, String title, String description, PriorityLevel priorityLevel) {
+    public Task(Deadline deadline, String title, String description, PriorityLevel priorityLevel) {
         this.deadline = deadline;
         this.title = title;
         this.description = description;
@@ -32,7 +32,7 @@ public class Task {
         this.isCompleted = false;
     }
 
-    public String getDeadline() {
+    public Deadline getDeadline() {
         return deadline;
     }
 
@@ -83,7 +83,7 @@ public class Task {
      * @param deadline
      * @return the new Task
      */
-    public Task deferred(String deadline) {
+    public Task deferred(Deadline deadline) {
         this.deadline = deadline;
         return this;
     }

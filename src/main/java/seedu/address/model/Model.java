@@ -25,7 +25,7 @@ public interface Model {
      */
     boolean hasTask(Task task);
 
-    void deferTaskDeadline(Task task, String deadline);
+    void deferTaskDeadline(Task task, Deadline deadline);
     /**
      * Deletes the given task.
      * The task must exist in the task book.

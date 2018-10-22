@@ -65,7 +65,7 @@ public class Deadline {
             return false;
         } else if (Integer.parseInt(month) < 0 || Integer.parseInt(month) > 12) {
             return false;
-        } else if (Integer.parseInt(year) < 1000 || Integer.parseInt(year) > 10000) {
+        } else if (Integer.parseInt(year) < 1000 || Integer.parseInt(year) > 9999) {
             return false;
         }
         return true;
