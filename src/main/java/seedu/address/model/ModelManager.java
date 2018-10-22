@@ -65,12 +65,14 @@ public class ModelManager extends ComponentManager implements Model {
         return versionedTaskBook.hasTask(person);
     }
 
-    //@@ChanChunCheong
+    //@@author ChanChunCheong
     @Override
     public void deferTaskDeadline(Task target, String deadline) {
         versionedTaskBook.deferDeadline(target, deadline);
         indicateTaskBookChanged();
     }
+
+    //@@author chelseyong
     @Override
     public void deleteTask(Task target) {
         versionedTaskBook.removeTask(target);
@@ -89,7 +91,6 @@ public class ModelManager extends ComponentManager implements Model {
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
         indicateTaskBookChanged();
     }
-
 
     @Override
     public void updateTask(Task target, Task editedTask) {
@@ -118,6 +119,7 @@ public class ModelManager extends ComponentManager implements Model {
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
         indicateTaskBookChanged();
     }
+
     //=========== Filtered Task List Accessors =============================================================
 
     /**
