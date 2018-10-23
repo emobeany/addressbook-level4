@@ -97,4 +97,16 @@ public class Deadline {
         //s.matches("[-+]?\\d*\\.?\\d+");
         return s != null && s.matches("-?\\d+(\\.\\d+)?");
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this) {
+            return true;
+        } else if (object instanceof Deadline) {
+            Deadline otherDeadline = (Deadline) object;
+            return otherDeadline.day.equals(this.day) && otherDeadline.month.equals(this.month)
+                    && otherDeadline.year.equals(this.year);
+        }
+        return false;
+    }
 }

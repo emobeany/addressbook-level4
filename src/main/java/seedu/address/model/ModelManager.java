@@ -104,7 +104,13 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void selectDeadline(Deadline deadline) {
         versionedTaskBook.selectDeadline(deadline);
+        updateFilteredTaskList(predicateShowTasksWithSameDate(deadline));
         indicateTaskBookChanged();
+    }
+
+    // {@code Predicate} that returns true when the date is equal
+    private Predicate<Task> predicateShowTasksWithSameDate(Deadline deadline) {
+        return task -> task.getDeadline().equals(deadline);
     }
 
     @Override
