@@ -45,14 +45,13 @@ public interface Model {
     void addTask(Task task);
 
     //@@author emobeany
-    /**
-     * Selects the input date as deadline.
-     */
+    /** Selects the input date as deadline.*/
     void selectDeadline(Deadline deadline);
 
-    /**
-     * Returns true if input deadline is valid
-     */
+    /** Gets deadline previously selected from the TaskBook.*/
+    Deadline getDeadline();
+
+    /** Returns true if input deadline is valid.*/
     boolean validDeadline(Deadline deadline);
 
     /**

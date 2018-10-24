@@ -26,6 +26,7 @@ public class Task {
 
     public Task(String title, String description, PriorityLevel priorityLevel) {
         this.deadline = PLACEHOLDER_DEADLINE;
+        //this.deadline = getDeadline();
         this.title = title;
         this.description = description;
         this.priorityLevel = priorityLevel;
@@ -34,6 +35,10 @@ public class Task {
 
     public Deadline getDeadline() {
         return deadline;
+    }
+
+    public void setDeadline(Deadline deadline) {
+        this.deadline = deadline;
     }
 
     public String getTitle() {
@@ -103,7 +108,7 @@ public class Task {
 
         Task otherTask = (Task) other;
         return otherTask.getTitle().equals(getTitle())
-                && otherTask.getDeadline().equals(getTitle())
+                && otherTask.getDeadline().equals(getDeadline())
                 && otherTask.getDescription().equals(getDescription())
                 && otherTask.getPriorityLevel().equals(getPriorityLevel())
                 && otherTask.isCompleted() == isCompleted();

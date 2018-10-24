@@ -108,9 +108,13 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTaskBookChanged();
     }
 
-    // {@code Predicate} that returns true when the date is equal
+    /**{@code Predicate} that returns true when the date is equal*/
     private Predicate<Task> predicateShowTasksWithSameDate(Deadline deadline) {
         return task -> task.getDeadline().equals(deadline);
+    }
+
+    public Deadline getDeadline() {
+        return versionedTaskBook.getDeadline();
     }
 
     @Override
