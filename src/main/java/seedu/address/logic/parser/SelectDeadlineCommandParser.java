@@ -10,7 +10,6 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.SelectDeadlineCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.Model;
 
 //@@author emobeany
 /**

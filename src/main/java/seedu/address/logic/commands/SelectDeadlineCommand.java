@@ -54,7 +54,6 @@ public class SelectDeadlineCommand extends Command implements CommandParser {
 
         if (toSelect.getYear() == null) {
             toSelect.setYear(model.getYear());
-            System.out.println(toSelect.getYear());
         }
         if (!Deadline.isValidDeadline(toSelect.toString())) {
             throw new CommandException(MESSAGE_INVALID_DEADLINE);
