@@ -10,7 +10,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -116,7 +115,7 @@ public class EditTaskCommand extends Command implements CommandParser {
         int updatedHours = editTaskDescriptor.getExpectedNumOfHours().orElse(taskToEdit.getExpectedNumOfHours());
         int completedNumOfHours = taskToEdit.getCompletedNumOfHours();
         boolean isCompleted = taskToEdit.isCompleted();
-        Set<Milestone> milestoneList = taskToEdit.getMilestoneList();
+        List<Milestone> milestoneList = taskToEdit.getMilestoneList();
 
         return new Task(deadline, updatedModuleCode, updatedTitle, updatedDescription, updatedPriority, updatedHours,
                 completedNumOfHours, isCompleted, milestoneList);
