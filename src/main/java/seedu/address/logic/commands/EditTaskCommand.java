@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -19,10 +20,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.EditTaskCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
-import seedu.address.model.task.Deadline;
-import seedu.address.model.task.ModuleCode;
-import seedu.address.model.task.PriorityLevel;
-import seedu.address.model.task.Task;
+import seedu.address.model.task.*;
 
 //@@author emobeany
 /**
@@ -111,9 +109,13 @@ public class EditTaskCommand extends Command implements CommandParser {
         String updatedTitle = editTaskDescriptor.getTitle().orElse(taskToEdit.getTitle());
         String updatedDescription = editTaskDescriptor.getDescription().orElse(taskToEdit.getDescription());
         PriorityLevel updatedPriority = editTaskDescriptor.getPriorityLevel().orElse(taskToEdit.getPriorityLevel());
-        Integer updatedHours = editTaskDescriptor.getExpectedNumOfHours().orElse(taskToEdit.getExpectedNumOfHours());
+        int updatedHours = editTaskDescriptor.getExpectedNumOfHours().orElse(taskToEdit.getExpectedNumOfHours());
+        int completedNumOfHours = taskToEdit.getCompletedNumOfHours();
+        boolean isCompleted = taskToEdit.isCompleted();
+        Set<Milestone> milestoneList = taskToEdit.getMilestoneList();
 
-        return new Task(deadline, updatedModuleCode, updatedTitle, updatedDescription, updatedPriority, updatedHours);
+        return new Task(deadline, updatedModuleCode, updatedTitle, updatedDescription, updatedPriority, updatedHours,
+                completedNumOfHours, isCompleted, milestoneList);
     }
 
     @Override
