@@ -20,7 +20,11 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.EditTaskCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
-import seedu.address.model.task.*;
+import seedu.address.model.task.Deadline;
+import seedu.address.model.task.Milestone;
+import seedu.address.model.task.ModuleCode;
+import seedu.address.model.task.PriorityLevel;
+import seedu.address.model.task.Task;
 
 //@@author emobeany
 /**
