@@ -12,7 +12,6 @@ import static seedu.address.testutil.TypicalDeadlines.MONTH_DESC_2;
 import static seedu.address.testutil.TypicalDeadlines.VALID_1ST_JAN_2018;
 import static seedu.address.testutil.TypicalDeadlines.VALID_DAY_1;
 import static seedu.address.testutil.TypicalDeadlines.VALID_MONTH_JAN;
-import static seedu.address.testutil.TypicalDeadlines.VALID_YEAR_2018;
 import static seedu.address.testutil.TypicalDeadlines.YEAR_DESC_2018;
 import static seedu.address.testutil.TypicalDeadlines.YEAR_DESC_2019;
 
