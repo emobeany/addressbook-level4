@@ -60,9 +60,6 @@ public class SelectDeadlineCommandParserTest {
 
         // missing month prefix
         assertParseFailure(parser, DAY_DESC_1 + VALID_MONTH_JAN + YEAR_DESC_2018, expectedMessage);
-
-        // missing year prefix
-        assertParseFailure(parser, DAY_DESC_1 + MONTH_DESC_1 + VALID_YEAR_2018, expectedMessage);
     }
 
     @Test
