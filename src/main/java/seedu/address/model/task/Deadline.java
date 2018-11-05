@@ -38,11 +38,13 @@ public class Deadline {
         String[] entries = deadline.split("/");
         this.day = entries[0];
         this.month = entries[1];
-        this.year = entries[2];
+        if (deadline.split("/").length != 2) {
+            this.year = entries[2];
+        }
     }
 
     public static boolean isValidFormat(String deadline) {
-        return deadline.split("/").length == 3;
+        return deadline.split("/").length >= 2;
     }
 
     public String getDay() {

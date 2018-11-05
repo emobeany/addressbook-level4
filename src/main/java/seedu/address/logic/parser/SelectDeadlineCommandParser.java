@@ -31,8 +31,8 @@ public class SelectDeadlineCommandParser implements Parser<SelectDeadlineCommand
                     SelectDeadlineCommand.MESSAGE_USAGE));
         }
 
-        String day = ParserUtil.parseDay(argMultimap.getValue(PREFIX_DAY).get());
-        String month = ParserUtil.parseMonth(argMultimap.getValue(PREFIX_MONTH).get());
+        String day = ParserUtil.parseDay(argMultimap.getValue(PREFIX_DAY).orElse(""));
+        String month = ParserUtil.parseMonth(argMultimap.getValue(PREFIX_MONTH).orElse(""));
         String year;
         if (argMultimap.getValue(PREFIX_YEAR).isPresent()) {
             year = ParserUtil.parseYear(argMultimap.getValue(PREFIX_YEAR).get());
