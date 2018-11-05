@@ -82,8 +82,6 @@ public class EditTaskCommand extends Command implements CommandParser {
         }
         Task taskToEdit = lastShownList.get(index.getZeroBased());
         Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
-        System.out.println(taskToEdit.getModuleCode());
-        System.out.println(editTaskDescriptor.getModuleCode());
 
         if (taskToEdit.equals(editedTask)) {
             throw new CommandException(MESSAGE_NOT_EDITED);

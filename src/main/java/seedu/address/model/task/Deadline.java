@@ -19,12 +19,17 @@ public class Deadline {
 
     private final String day;
     private final String month;
-    private final String year;
+    private String year;
 
     public Deadline(String day, String month, String year) {
         this.day = day;
         this.month = month;
         this.year = year;
+    }
+
+    public Deadline(String day, String month) {
+        this.day = day;
+        this.month = month;
     }
 
     public Deadline(String deadline) {
@@ -50,6 +55,10 @@ public class Deadline {
 
     public String getYear() {
         return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 
     /**
