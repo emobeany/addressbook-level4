@@ -18,13 +18,18 @@ import seedu.address.model.task.Deadline;
 public class SelectDeadlineCommandParser implements Parser<SelectDeadlineCommand> {
     @Override
     public SelectDeadlineCommand parse(String userInput) throws ParseException {
+
         Deadline deadlineWithoutPrefixes = parseWithoutPrefixes(userInput);
         if (deadlineWithoutPrefixes != null) {
             return new SelectDeadlineCommand(deadlineWithoutPrefixes);
         }
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(userInput, PREFIX_DAY, PREFIX_MONTH, PREFIX_YEAR);
-
+        // shows correct error message when illegal character is used in dd/mm/yyyy format
+        if (noPrefixesPresent(argMultimap, PREFIX_DAY, PREFIX_MONTH, PREFIX_YEAR)) {
+            ParserUtil.parseDeadline(userInput);
+        }
+        //
         if (!arePrefixesPresent(argMultimap, PREFIX_DAY, PREFIX_MONTH)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
@@ -34,14 +39,26 @@ public class SelectDeadlineCommandParser implements Parser<SelectDeadlineCommand
         String day = ParserUtil.parseDay(argMultimap.getValue(PREFIX_DAY).orElse(""));
         String month = ParserUtil.parseMonth(argMultimap.getValue(PREFIX_MONTH).orElse(""));
         String year;
+
         if (argMultimap.getValue(PREFIX_YEAR).isPresent()) {
             year = ParserUtil.parseYear(argMultimap.getValue(PREFIX_YEAR).get());
         } else {
             Deadline deadline = new Deadline(day, month);
             return new SelectDeadlineCommand(deadline);
         }
+        day = day.replaceFirst("^0+(?!$)", "");
+        month = month.replaceFirst("^0+(?!$)", "");
+        year = year.replaceFirst("^0+(?!$)", "");
         Deadline deadline = new Deadline(day, month, year);
         return new SelectDeadlineCommand(deadline);
+    }
+
+    /**
+     * Returns true if all of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    protected static boolean noPrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).noneMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
     /**
