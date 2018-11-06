@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static org.junit.Assert.assertEquals;
 
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.SelectDeadlineCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.task.Deadline;
 
@@ -49,6 +50,22 @@ public class CommandParserTestUtil {
             throw new AssertionError("The expected ParseException was not thrown.");
         } catch (ParseException pe) {
             assertEquals(expectedMessage, pe.getMessage());
+        }
+    }
+
+    //@@author emobeany
+    /**
+     * Asserts that the parsing of {@code userInput} by {@code parser} is successful and the command created
+     * equals to {@code expectedCommand}.
+     * Only applicable for SelectDeadlineCommandParserTest
+     */
+    public static void assertParseSuccessWithoutYear(SelectDeadlineCommandParserTest.ParserWithoutYear parser,
+                                                     String year, String userInput, Command expectedCommand) {
+        try {
+            Command command = parser.parse(userInput, year);
+            assertEquals(expectedCommand, command);
+        } catch (ParseException pe) {
+            throw new IllegalArgumentException("Invalid userInput.", pe);
         }
     }
 }

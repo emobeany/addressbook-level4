@@ -28,9 +28,17 @@ public class TypicalDeadlines {
     public static final String INVALID_MONTH_13 = "13";
     public static final String VALID_YEAR_2018 = "2018";
     public static final String VALID_YEAR_2020 = "2020";
+    public static final String LEAP_YEAR_2020 = "2020";
+    public static final String NON_LEAP_YEAR_2100 = "2100";
+    public static final String LEAP_YEAR_2400 = "2400";
     public static final String VALID_YEAR_9999 = "9999";
     public static final String INVALID_YEAR_PASSED_2017 = "2017";
     public static final String INVALID_YEAR_10000 = "10000";
+    public static final String VALID_1ST_JAN_2018_WITHOUT_PREFIX = "1/1/2018";
+    public static final String VALID_1ST_JAN_WITHOUT_PREFIX = "1/1";
+    public static final String INVALID_YEAR_WITH_SYMBOLS = "2@18";
+    public static final String INVALID_YEAR_WITH_ALPHABETS = "2o18";
+    public static final String INVALID_YEAR_WITH_SPACE = "2 18";
 
     public static final String DAY_DESC_1 = " " + PREFIX_DAY + "1";
     public static final String DAY_DESC_2 = " " + PREFIX_DAY + "2";
@@ -93,6 +101,16 @@ public class TypicalDeadlines {
 
     public static final Deadline INVALID_1ST_JAN_10000 = new DeadlineBuilder().withDay(VALID_DAY_1)
             .withMonth(VALID_MONTH_JAN).withYear(INVALID_YEAR_10000).build();
+
+    //For deadline without year
+    public static final Deadline VALID_1ST_JAN_WITHOUT_YEAR = new DeadlineBuilder().withDay(VALID_DAY_1)
+            .withMonth(VALID_MONTH_JAN).build();
+
+    public static final Deadline INVALID_32ND_JAN_WITHOUT_YEAR = new DeadlineBuilder()
+            .withDay(INVALID_DAY_FOR_MONTHS_WITH_31_DAYS).withMonth(VALID_MONTH_JAN).build();
+
+    public static final Deadline VALID_1ST_APR_WITHOUT_YEAR = new DeadlineBuilder()
+            .withDay(VALID_DAY_1).withMonth(VALID_MONTH_APR).build();
 
     private TypicalDeadlines() {} // prevents instantiation
 }

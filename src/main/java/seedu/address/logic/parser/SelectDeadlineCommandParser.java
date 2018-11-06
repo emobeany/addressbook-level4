@@ -57,7 +57,7 @@ public class SelectDeadlineCommandParser implements Parser<SelectDeadlineCommand
      * @param userInput without date, month and year prefixes
      * @return the parsed Deadline
      */
-    public Deadline parseWithoutPrefixes(String userInput) {
+    protected static Deadline parseWithoutPrefixes(String userInput) {
         try {
             return ParserUtil.parseDeadline(userInput);
         } catch (ParseException e) {
