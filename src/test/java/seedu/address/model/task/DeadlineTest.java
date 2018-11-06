@@ -11,6 +11,9 @@ import static seedu.address.testutil.TypicalDeadlines.INVALID_30TH_FEB_2020;
 import static seedu.address.testutil.TypicalDeadlines.INVALID_31ST_APR_2018;
 import static seedu.address.testutil.TypicalDeadlines.INVALID_32ND_JAN_2018;
 import static seedu.address.testutil.TypicalDeadlines.INVALID_32ND_JAN_WITHOUT_YEAR;
+import static seedu.address.testutil.TypicalDeadlines.INVALID_DEADLINE_ILLEGAL_CHAR_DAY;
+import static seedu.address.testutil.TypicalDeadlines.INVALID_DEADLINE_ILLEGAL_CHAR_MONTH;
+import static seedu.address.testutil.TypicalDeadlines.INVALID_DEADLINE_ILLEGAL_CHAR_YEAR;
 import static seedu.address.testutil.TypicalDeadlines.INVALID_YEAR_WITH_ALPHABETS;
 import static seedu.address.testutil.TypicalDeadlines.INVALID_YEAR_WITH_SPACE;
 import static seedu.address.testutil.TypicalDeadlines.INVALID_YEAR_WITH_SYMBOLS;
@@ -43,6 +46,34 @@ public class DeadlineTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void isValidFormat() {
+        // Deadline with only day dd -> false
+        assertFalse(Deadline.isValidFormat(VALID_DAY_1));
+
+        // Deadline with day and month dd/mm -> true
+        assertTrue(Deadline.isValidFormat(VALID_1ST_JAN_WITHOUT_YEAR.toString()));
+
+        // Deadline with all 3 fields dd/mm/yyyy -> true
+        assertTrue(Deadline.isValidFormat(VALID_1ST_JAN_2018.toString()));
+    }
+
+    @Test
+    public void containsIllegalCharacters() {
+        // Deadline contains illegal character in Day -> true
+        assertTrue(Deadline.containsIllegalCharacters(INVALID_DEADLINE_ILLEGAL_CHAR_DAY.toString()));
+
+        // Deadline contains illegal character in Month -> true
+        assertTrue(Deadline.containsIllegalCharacters(INVALID_DEADLINE_ILLEGAL_CHAR_MONTH.toString()));
+
+        // Deadline contains illegal character in Year -> true
+        assertTrue(Deadline.containsIllegalCharacters(INVALID_DEADLINE_ILLEGAL_CHAR_YEAR.toString()));
+
+        // No illegal character -> false
+        assertFalse(Deadline.containsIllegalCharacters(VALID_1ST_JAN_2018.toString()));
+        assertFalse(Deadline.containsIllegalCharacters(VALID_1ST_JAN_WITHOUT_YEAR.toString()));
+    }
 
     @Test
     public void isValidDeadline() {
@@ -98,18 +129,6 @@ public class DeadlineTest {
         assertFalse(Deadline.isValidDeadline(INVALID_32ND_JAN_WITHOUT_YEAR.toString()));
     }
 
-    @Test
-    public void isValidFormat() {
-
-        // Deadline with only day dd -> false
-        assertFalse(Deadline.isValidFormat(VALID_DAY_1));
-
-        // Deadline with day and month dd/mm -> true
-        assertTrue(Deadline.isValidFormat(VALID_1ST_JAN_WITHOUT_YEAR.toString()));
-
-        // Deadline with all 3 fields dd/mm/yyyy -> true
-        assertTrue(Deadline.isValidFormat(VALID_1ST_JAN_2018.toString()));
-    }
 
     @Test
     public void isNumeric() {

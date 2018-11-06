@@ -75,7 +75,7 @@ public class SelectDeadlineCommandTest {
     }
 
     @Test
-    public void execute_invalidDeadlineWithoutYear_throwCommandException() throws Exception {
+    public void execute_invalidDeadlineWithoutYear_throwsCommandException() throws Exception {
         Deadline invalidDeadline = INVALID_32ND_JAN_WITHOUT_YEAR;
         SelectDeadlineCommand selectCommand = new SelectDeadlineCommand(invalidDeadline);
         ModelStub modelStub = new ModelStubWithDeadline(invalidDeadline);

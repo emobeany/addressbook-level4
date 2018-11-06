@@ -24,14 +24,14 @@ public class Deadline {
     private String year;
 
     public Deadline(String day, String month, String year) {
-        this.day = day;
-        this.month = month;
-        this.year = year;
+        this.day = day.replaceFirst("^0+(?!$)", "");
+        this.month = month.replaceFirst("^0+(?!$)", "");
+        this.year = year.replaceFirst("^0+(?!$)", "");
     }
 
     public Deadline(String day, String month) {
-        this.day = day;
-        this.month = month;
+        this.day = day.replaceFirst("^0+(?!$)", "");
+        this.month = month.replaceFirst("^0+(?!$)", "");
     }
 
     public Deadline(String deadline) {

@@ -11,8 +11,10 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccessWithoutYear;
 import static seedu.address.logic.parser.SelectDeadlineCommandParser.arePrefixesPresent;
 import static seedu.address.logic.parser.SelectDeadlineCommandParser.parseWithoutPrefixes;
+import static seedu.address.testutil.TypicalDeadlines.DAY_DESC_01;
 import static seedu.address.testutil.TypicalDeadlines.DAY_DESC_1;
 import static seedu.address.testutil.TypicalDeadlines.DAY_DESC_2;
+import static seedu.address.testutil.TypicalDeadlines.MONTH_DESC_01;
 import static seedu.address.testutil.TypicalDeadlines.MONTH_DESC_1;
 import static seedu.address.testutil.TypicalDeadlines.MONTH_DESC_2;
 import static seedu.address.testutil.TypicalDeadlines.VALID_1ST_JAN_2018;
@@ -22,6 +24,7 @@ import static seedu.address.testutil.TypicalDeadlines.VALID_1ST_JAN_WITHOUT_YEAR
 import static seedu.address.testutil.TypicalDeadlines.VALID_DAY_1;
 import static seedu.address.testutil.TypicalDeadlines.VALID_MONTH_JAN;
 import static seedu.address.testutil.TypicalDeadlines.VALID_YEAR_2018;
+import static seedu.address.testutil.TypicalDeadlines.YEAR_DESC_02018;
 import static seedu.address.testutil.TypicalDeadlines.YEAR_DESC_2018;
 import static seedu.address.testutil.TypicalDeadlines.YEAR_DESC_2019;
 
@@ -60,6 +63,18 @@ public class SelectDeadlineCommandParserTest {
 
         // multiple years - last year accepted
         assertParseSuccess(parser, DAY_DESC_1 + MONTH_DESC_1 + YEAR_DESC_2019 + YEAR_DESC_2018,
+                new SelectDeadlineCommand(expectedDeadline));
+
+        // 0 in front of day to be selected - preceding 0 trimmed
+        assertParseSuccess(parser, DAY_DESC_01 + MONTH_DESC_1 + YEAR_DESC_2018,
+                new SelectDeadlineCommand(expectedDeadline));
+
+        // 0 in front of month to be selected - preceding 0 trimmed
+        assertParseSuccess(parser, DAY_DESC_1 + MONTH_DESC_01 + YEAR_DESC_2018,
+                new SelectDeadlineCommand(expectedDeadline));
+
+        // 0 in front of year to be selected - preceding 0 trimmed
+        assertParseSuccess(parser, DAY_DESC_1 + MONTH_DESC_1 + YEAR_DESC_02018,
                 new SelectDeadlineCommand(expectedDeadline));
     }
 

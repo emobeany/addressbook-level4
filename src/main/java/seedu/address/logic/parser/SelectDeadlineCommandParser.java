@@ -46,9 +46,6 @@ public class SelectDeadlineCommandParser implements Parser<SelectDeadlineCommand
             Deadline deadline = new Deadline(day, month);
             return new SelectDeadlineCommand(deadline);
         }
-        day = day.replaceFirst("^0+(?!$)", "");
-        month = month.replaceFirst("^0+(?!$)", "");
-        year = year.replaceFirst("^0+(?!$)", "");
         Deadline deadline = new Deadline(day, month, year);
         return new SelectDeadlineCommand(deadline);
     }
