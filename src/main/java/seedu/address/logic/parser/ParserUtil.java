@@ -5,8 +5,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_DEADLINE_CONTAINS_ILLE
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.util.StringUtil.isNonZeroUnsignedInteger;
 
-import java.net.Inet4Address;
-
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.commands.SelectDeadlineCommand;
