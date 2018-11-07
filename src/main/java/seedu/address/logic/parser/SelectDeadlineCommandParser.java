@@ -29,7 +29,6 @@ public class SelectDeadlineCommandParser implements Parser<SelectDeadlineCommand
         if (noPrefixesPresent(argMultimap, PREFIX_DAY, PREFIX_MONTH, PREFIX_YEAR)) {
             ParserUtil.parseDeadline(userInput);
         }
-        //
         if (!arePrefixesPresent(argMultimap, PREFIX_DAY, PREFIX_MONTH)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
@@ -39,7 +38,6 @@ public class SelectDeadlineCommandParser implements Parser<SelectDeadlineCommand
         String day = ParserUtil.parseDay(argMultimap.getValue(PREFIX_DAY).orElse(""));
         String month = ParserUtil.parseMonth(argMultimap.getValue(PREFIX_MONTH).orElse(""));
         String year;
-
         if (argMultimap.getValue(PREFIX_YEAR).isPresent()) {
             year = ParserUtil.parseYear(argMultimap.getValue(PREFIX_YEAR).get());
         } else {
