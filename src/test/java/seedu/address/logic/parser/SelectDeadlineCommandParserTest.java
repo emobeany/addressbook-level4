@@ -171,7 +171,7 @@ public class SelectDeadlineCommandParserTest {
             if (argMultimap.getValue(PREFIX_YEAR).isPresent()) {
                 year = ParserUtil.parseYear(argMultimap.getValue(PREFIX_YEAR).get());
             } else {
-                Deadline deadline = new Deadline(day, month, null);
+                Deadline deadline = new Deadline(day, month);
                 deadline.setYear(year);
                 return new SelectDeadlineCommand(deadline);
             }
