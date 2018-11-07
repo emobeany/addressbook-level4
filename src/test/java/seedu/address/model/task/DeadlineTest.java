@@ -1,6 +1,10 @@
 package seedu.address.model.task;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+
 import static seedu.address.testutil.TypicalDeadlines.INVALID_0_JAN_2018;
 import static seedu.address.testutil.TypicalDeadlines.INVALID_1ST_0_2018;
 import static seedu.address.testutil.TypicalDeadlines.INVALID_1ST_13_2018;
